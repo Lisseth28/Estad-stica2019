@@ -1,0 +1,174 @@
+##PRÁCTICA 2. VARIABLES Y FRECUENCIAS##
+#se usa la siguiente función para cargar set de datos#
+data()
+#para ver todos los set de datos de paquetes instalados#
+data(package = .packages(all.available = TRUE))
+#instalando paquetes necesarios para prácticas#
+install.packages("ape")
+install.packages("permute")
+install.packages("vegan")
+install.packages("ade4")
+install.packages("geiger")
+#ahora se deben cargar los paquetes instalados#
+library("ape")
+library("permute")
+library("vegan")
+library("ade4")
+library("geiger")
+#las siguientes son tablas que vienen por defecto en los paquetes#
+data(carnivora)
+data(jackal)
+data(jackal)
+data(BCI)
+data("mite.env")
+data(atlas)
+data(carniherbi49)
+data(corvus)
+data(tortues)
+data(geospiza)
+#para saber la clase de BCI#
+class(BCI)
+#para saber la clase de geospiza#
+class(geospiza)
+#ahora para obtener información sobre la estructura#
+str(BCI)
+str(geospiza)
+#¿qué es geospiza?#
+help(geospiza)
+#para acceder al segundo objeto#
+geospiza$geospiza.data
+#para extraer un objeto de la tabla#
+geospiza$geospiza.data[ ,1]
+#ejercicio#
+geospiza$geospiza.data[ ,2]
+class(geospiza$geospiza.data[ ,2])
+#tarsusL es clase "numeric" y variable continua#
+data("tortues")
+#tiene variables discretas#
+#para conocer la clase de las variables#
+class(tortues$long)
+class(tortues$larg)
+class(tortues$haut)
+class(tortues$sexe)
+#ahora vamos a mirar el objeto mite.env#
+data(mite.env)
+mite.env[ ,4]
+#para ver la clase de shrub#
+class(mite.env[ ,4])
+help(mite.env)
+#creando una semilla#
+set.seed(1)
+#sexos#
+sex <- c("F", "M")
+#inventando una muestra con las mismas probabilidades de sacar macho o hembra#
+pop1 <- sample(x = sex, size = 50,replace = T,prob = c(0.5,0.5))
+#para saber cuál es la razón de sexos en la muestra#
+M <- length(which(pop1 == 'M'))
+F <- length(which(pop1 == 'F'))
+paste(F,'/',M,sep = '')
+F/M
+#creando de nuevo una semilla#
+set.seed(1)
+#sexos#
+sex <- c('F', 'M')
+pop1 <- sample(x = sex, size = 50,replace = T,prob = c(0.8,0.2))
+#para conocer la razón de sexos en la muestra#
+M <- length(which(pop1 == 'M'))
+F <- length(which(pop1 == 'F'))
+paste(F,'/',M,sep = '')
+F/M
+#calcular la proporción de machos y hembras en tortues#
+data(tortues)
+set.seed(1)
+sex <- c("F", "M")
+M <- length(which(pop1 == "M"))
+F <- length(which(pop1 == "F"))
+paste(F,"/",M,sep = "")
+F/M
+#se puede generar la proporción entre dos medidas para obtener una variable derivada#
+#tomamos medidas de cráneos de lagarto#
+ancho <- rnorm(n = 32,mean = 10,sd = 1)
+largo <- rnorm(n = 32,mean = 15,sd = 1)
+#ahora se juntan los dos datos#
+medidas <- cbind(ancho, largo)
+#Ahora se construye la tabla#
+Tabla_medidas <- as.data.frame(cbind(paste('spp',1:32,sep = '_'),medidas))
+colnames(Tabla_medidas) <- c('Individuos', 'Ancho','Largo')
+Tabla_medidas
+#relación ancho/largo#
+prp <- ancho/largo
+Tabla_medidas_prp <- cbind.data.frame(Tabla_medidas, prp)
+#proporción entre ancho y largo usando tortues#
+data(tortues)
+prp1 <- tortues$larg/tortues$haut
+prp1
+tortues2 <- cbind.data.frame(tortues, prp1)
+tortues2
+write.csv(tortues2, file= "tortugas2.csv")
+#conteo o frecuencia#
+freq <- table(mite.env$Substrate)
+freq
+#fracción#
+prop.table(freq)
+#para visualizar las proporciones#
+pie(prop.table(freq))
+#Ejercicio: Fueron muestreadas 9 especies en la región Paleártica-Africana#
+freq1 <- table(corvus$habitat)
+freq
+prop.table(freq1)
+pie(prop.table(freq1))
+#Distribución de frecuencias#
+freq
+mite.env$Substrate
+#para graficar las frecuencias de cada sustrato#
+plot(freq)
+#Ejercicio: gráfico de frecuencias para tipos de hábitat de corvus#
+plot(freq1)
+#sumar las ocurrencias de cada sp#
+atlas$birds
+xsp<- apply(atlas$birds,2,sum)
+#¿cuál es el mínimo?#
+min(xsp)
+which.min(xsp)
+xsp[which.min(xsp)]
+#generando vector#
+x <- which.min(xsp)
+xsp[x]
+#Ejercicio: encuentre el máximo#
+max(xsp)
+which.max(xsp)
+#longitud de las tortugas#
+tortues$long
+#para organizar en rangos#
+table(tortues$long)
+#¿cuál es el mínimo?#
+min(tortues$long)
+#¿cuál es el máximo?#
+max(tortues$long)
+#para ver directamente el rango#
+range(tortues$long)
+#generar las cajas#
+bins <- seq(92.5,177.5, 10)
+#agrupando los datos en cajas#
+datos <- cut(tortues$long,bins)
+#para generar tablas de frecuencias#
+freq_long<-table(datos)
+#ahora para generar un data.frame de frecuencias#
+transform(freq_long)
+transform(freq_long, Relativ= prop.table(Freq), Acum= cumsum(Freq))
+#histograma de datos crudos#
+hist(tortues$long)
+#Ejercicio#
+data(corvus)
+datos <- c(corvus$wing, corvus$bill)
+datos
+table(datos)
+min(datos)
+max(datos)
+range(datos)
+bins1 <- seq(44.5, 473.5, 10)
+datoscor <- cut(datos, bins1)
+tablaf <- table(datoscor)
+transform(tablaf)
+hist(datos)
+hist(datos, col= rainbow(8))
