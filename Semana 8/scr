@@ -1,0 +1,173 @@
+##SEMANA 8##
+#Ejer:  Aumente el valor de desviación estándar y evalúe cómo cambia el error estándar.
+pop <- ceiling(rnorm(5000, mean = 38,sd = 7))
+#Aumenta el error estándar#
+
+#Ejer: Aumente el tamaño de la muestra y evalúe cómo cambia el error estándar#
+m1 <- sample(x = pop,size = 50, replace = T)
+m2 <- sample(x = pop,size = 50, replace = T)
+m3 <- sample(x = pop,size = 50, replace = T)
+sd(m1)/sqrt(length(m1))
+sd(m2)/sqrt(length(m2))
+sd(m3)/sqrt(length(m3))
+
+boxplot(cbind(m1,m2,m3))
+
+
+#Ejer: Cambie el tamaño de muestra y evalúe el valor de error estándar. ¿Cuánto debería 
+#aumentar la muestra para que el error estándar disminuya a la mitad?
+
+m1 <- sample(x = pop,size = 15, replace = T)
+m2 <- sample(x = pop,size = 15, replace = T)
+m3 <- sample(x = pop,size = 15, replace = T)
+sd(m1)/sqrt(length(m1))
+sd(m2)/sqrt(length(m2))
+sd(m3)/sqrt(length(m3))
+sd(c(m1,m2,m3))/sqrt(length(c(m1,m2,m3)))
+####Eje Mayor####
+##Estadío I####
+EjeMayorAI <- rnorm(n = 100, mean = 0.9, sd = 0.05)
+EjeMayorBI <- rnorm(n = 100, mean = 0.9, sd = 0.05)
+EjeMayorApobI <- sample(x = EjeMayorAI,size = 10, replace = T)
+EjeMayorBpobI <- sample(x = EjeMayorBI,size = 10, replace = T)
+
+##Estadío II####
+EjeMayorAII <- rnorm(n = 100, mean = 1, sd = 0.05)
+EjeMayorBII <- rnorm(n = 100, mean = 1, sd = 0.05)
+EjeMayorApobII <- sample(x = EjeMayorAII,size = 10, replace = T)
+EjeMayorBpobII <- sample(x = EjeMayorBII,size = 10, replace = T)
+
+##Estadío III####
+EjeMayorAIII <- rnorm(n = 100, mean = 1.5, sd = 0.05)
+EjeMayorBIII <- rnorm(n = 100, mean = 1.5, sd = 0.05)
+EjeMayorApobIII <- sample(x = EjeMayorAIII,size = 10, replace = T)
+EjeMayorBpobIII <- sample(x = EjeMayorBIII,size = 10, replace = T)
+
+##Estadío IV####
+EjeMayorAIV <- rnorm(n = 100, mean = 1.75, sd = 0.05)
+EjeMayorBIV <- rnorm(n = 100, mean = 1.75, sd = 0.05)
+EjeMayorApobIV <- sample(x = EjeMayorAIV,size = 10, replace = T)
+EjeMayorBpobIV <- sample(x = EjeMayorBIV,size = 10, replace = T)
+
+##Estadío Va,b####
+EjeMayorAVab <- rnorm(n = 100, mean = 1.8, sd = 0.05)
+EjeMayorBVab <- rnorm(n = 100, mean = 1.8, sd = 0.05)
+EjeMayorApobVab <- sample(x = EjeMayorAVab,size = 10, replace = T)
+EjeMayorBpobVab <- sample(x = EjeMayorBVab,size = 10, replace = T)
+
+##Estadío Vc####
+EjeMayorAVc <- rnorm(n = 100, mean = 2, sd = 0.05)
+EjeMayorBVc <- rnorm(n = 100, mean = 2, sd = 0.05)
+EjeMayorApobVc <- sample(x = EjeMayorAVc,size = 10, replace = T)
+EjeMayorBpobVc <- sample(x = EjeMayorBVc,size = 10, replace = T)
+
+####Eje Menor####
+##Estadío I####
+EjeMenorAI <- rnorm(n = 100, mean = 0.45, sd = 0.02)
+EjeMenorBI <- rnorm(n = 100, mean = 0.45, sd = 0.02)
+EjeMenorApobI <- sample(x = EjeMenorAI,size = 10, replace = T)
+EjeMenorBpobI <- sample(x = EjeMenorBI,size = 10, replace = T)
+
+##Estadío II####
+EjeMenorAII <- rnorm(n = 100, mean = 0.5, sd = 0.02)
+EjeMenorBII <- rnorm(n = 100, mean = 0.5, sd = 0.02)
+EjeMenorApobII <- sample(x = EjeMenorAII,size = 10, replace = T)
+EjeMenorBpobII <- sample(x = EjeMenorBII,size = 10, replace = T)
+
+##Estadío III####
+EjeMenorAIII <- rnorm(n = 100, mean = 0.55, sd = 0.02)
+EjeMenorBIII <- rnorm(n = 100, mean = 0.55, sd = 0.02)
+EjeMenorApobIII <- sample(x = EjeMenorAIII,size = 10, replace = T)
+EjeMenorBpobIII <- sample(x = EjeMenorBIII,size = 10, replace = T)
+
+##Estadío IV####
+EjeMenorAIV <- rnorm(n = 100, mean = 0.6, sd = 0.02)
+EjeMenorBIV <- rnorm(n = 100, mean = 0.6, sd = 0.02)
+EjeMenorApobIV <- sample(x = EjeMenorAIV,size = 10, replace = T)
+EjeMenorBpobIV <- sample(x = EjeMenorBIV,size = 10, replace = T)
+
+##Estadío Va,b####
+EjeMenorAVab <- rnorm(n = 100, mean = 0.65, sd = 0.02)
+EjeMenorBVab <- rnorm(n = 100, mean = 0.65, sd = 0.02)
+EjeMenorApobVab <- sample(x = EjeMenorAVab,size = 10, replace = T)
+EjeMenorBpobVab <- sample(x = EjeMenorBVab,size = 10, replace = T)
+
+##Estadío Vc####
+EjeMenorAVc <- rnorm(n = 100, mean = 0.7, sd = 0.02)
+EjeMenorBVc <- rnorm(n = 100, mean = 0.7, sd = 0.02)
+EjeMayorApobVc <- sample(x = EjeMenorAVc,size = 10, replace = T)
+EjeMenorBpobVc <- sample(x = EjeMenorBVc,size = 10, replace = T)
+
+####Volumen####
+##Estadío I####
+EjeVolumenAI <- rnorm(n = 100, mean = 0.05, sd = 0.02)
+EjeVolumenBI <- rnorm(n = 100, mean = 0.05, sd = 0.02)
+EjeVolumenApobI <- sample(x = EjeVolumenAI,size = 10, replace = T)
+EjeVolumenBpobI <- sample(x = EjeVolumenBI,size = 10, replace = T)
+
+##Estadío II####
+EjeVolumenAII <- rnorm(n = 100, mean = 0.1, sd = 0.02)
+EjeVolumenBII <- rnorm(n = 100, mean = 0.1, sd = 0.02)
+EjeVolumenApobII <- sample(x = EjeVolumenAII,size = 10, replace = T)
+EjeVolumenBpobII <- sample(x = EjeVolumenBII,size = 10, replace = T)
+
+##Estadío III####
+EjeVolumenAIII <- rnorm(n = 100, mean = 0.15, sd = 0.02)
+EjeVolumenBIII <- rnorm(n = 100, mean = 0.15, sd = 0.02)
+EjeVolumenApobIII <- sample(x = EjeVolumenAIII,size = 10, replace = T)
+EjeVolumenBpobIII <- sample(x = EjeVolumenBIII,size = 10, replace = T)
+
+##Estadío IV####
+EjeVolumenAIV <- rnorm(n = 100, mean = 0.17, sd = 0.02)
+EjeVolumenBIV <- rnorm(n = 100, mean = 0.17, sd = 0.02)
+EjeVolumenApobIV <- sample(x = EjeVolumenAIV,size = 10, replace = T)
+EjeVolumenBpobIV <- sample(x = EjeVolumenIV,size = 10, replace = T)
+
+##Estadío Va,b####
+EjeVolumenAVab <- rnorm(n = 100, mean = 0.182, sd = 0.02)
+EjeVolumenBVab <- rnorm(n = 100, mean = 0.182, sd = 0.02)
+EjeVolumenApobVab <- sample(x = EjeVolumenAVab,size = 10, replace = T)
+EjeVolumenBpobVab <- sample(x = EjeVolumenBVab,size = 10, replace = T)
+
+##Estadío Vc####
+EjeVolumenAVc <- rnorm(n = 100, mean = 0.2, sd = 0.02)
+EjeVolumenBVc <- rnorm(n = 100, mean = 0.2, sd = 0.02)
+EjeVolumenApobVc <- sample(x = EjeVolumenAVc,size = 10, replace = T)
+EjeVolumenBpobVc <- sample(x = EjeVolumenBVc,size = 10, replace = T)
+
+####Peso####
+##Estadío I####
+EjePesoAI <- rnorm(n = 100, mean = 0.2, sd = 0.035)
+EjePesoBI <- rnorm(n = 100, mean = 0.2, sd = 0.035)
+EjePesoApobI <- sample(x = EjePesoAI,size = 10, replace = T)
+EjePesoBpobI <- sample(x = EjePesoBI,size = 10, replace = T)
+
+##Estadío II####
+EjePesoAII <- rnorm(n = 100, mean = 0.25, sd = 0.035)
+EjePesoBII <- rnorm(n = 100, mean = 0.25, sd = 0.035)
+EjePesoApobII <- sample(x = EjePesoAII,size = 10, replace = T)
+EjePesoBpobII <- sample(x = EjePesoBII,size = 10, replace = T)
+
+##Estadío III####
+EjePesoAIII <- rnorm(n = 100, mean = 0.3, sd = 0.035)
+EjePesoBIII <- rnorm(n = 100, mean = 0.3, sd = 0.035)
+EjePesoApobIII <- sample(x = EjePesoAIII,size = 10, replace = T)
+EjePesoBpobIII <- sample(x = EjePesoBIII,size = 10, replace = T)
+
+##Estadío IV####
+EjePesoAIV <- rnorm(n = 100, mean = 0.37, sd = 0.035)
+EjePesoBIV <- rnorm(n = 100, mean = 0.37, sd = 0.035)
+EjePesoApobIV <- sample(x = EjePesoAIV,size = 10, replace = T)
+EjePesoBpobIV <- sample(x = EjePesoIV,size = 10, replace = T)
+
+##Estadío Va,b####
+EjePesoAVab <- rnorm(n = 100, mean = 0.4, sd = 0.035)
+EjePesoBVab <- rnorm(n = 100, mean = 0.4, sd = 0.035)
+EjePesoApobVab <- sample(x = EjePesoAVab,size = 10, replace = T)
+EjePesoBpobVab <- sample(x = EjePesoBVab,size = 10, replace = T)
+
+##Estadío Vc####
+EjePesoAVc <- rnorm(n = 100, mean = 0.43, sd = 0.035)
+EjePesoBVc <- rnorm(n = 100, mean = 0.43, sd = 0.035)
+EjePesoApobVc <- sample(x = EjePesoAVc,size = 10, replace = T)
+EjePesoBpobVc <- sample(x = EjePesoBVc,size = 10, replace = T)
