@@ -1,0 +1,29 @@
+#SEMANA 3#
+
+#Ejer: Si la columna iris$petal.Lenght tuviera valores NA ¿cómo podría eliminarlos antes de hacer la estimación de la media?#
+
+#con na.rm = TRUE se pueden eliminar los valores NA presentes 
+
+#Estime la media aritmética de la altura, la longitud y el ancho del caparazón de las tortugas pintadas [data(tortues), paquete: ade4], use la función apply para obtener los estadísticos de cada medida en un mismo vector#
+library(ade4)
+data("tortues")
+tortues
+medianacol <- apply(tortues[1:3],2,mean)
+
+#Genere una función propia que le permita la mediana tal y como lo hizo con la media aritmética#
+mediana.l <- function(y){orden <- sort(y) 
+long<- lenght(y) 
+mitad<- (long/2) 
+mediana <- y[mitad] 
+return(mediana)}
+#Genere una función que le permita calcular la moda#
+moda.l<- function(m){ x<- table(m)
+moda<- x[which.max(x)]
+return(moda)}
+#Genere cuantiles en intervalos de 0.5#
+Q1<-quantile(setosa,probs = c(seq(0, 1, 0.25)))
+Q2<- quantile(setosa,probs = c(seq(0, 1, 0.5)))
+Q3<- quantile(setosa,probs = c(seq(0, 1, 0.75)))
+Q4<- quantile(setosa,probs = 1)
+
+
