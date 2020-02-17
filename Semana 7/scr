@@ -1,0 +1,40 @@
+##SEMANA 7##
+
+#TEOREMA DE LÍMITE CENTRAL#
+#Ejer: Tome cualquiera de las dos poblaciones y cambie los valores de tamaño y número de muestras hasta que obtenga un histograma similar a una distribución normal##¿cuán grande es la muestra?#
+tamaño.muestra<- 5000
+#¿cuántas muestras/poblaciones?#
+no.muestras <- 5
+#Generando matriz para poner las muestras tomadas de la población 2#
+matriz.muestrasP2<- matrix(NA,no.muestras,ncol = tamaño.muestra)
+matriz.muestrasP2
+for (i in 1:no.muestras){
+  muestra <- runif(tamaño.muestra)
+  matriz.muestrasP2 [i,]=muestra
+}
+#calculando la media#
+media.mmuestrasP2 <- apply(matriz.muestrasP2, 2, mean)
+media.mmuestrasP2
+#Adicionando a tabla#
+matriz.muestrasP2.media <- cbind(matriz.muestrasP2,media.mmuestrasP2)
+matriz.muestrasP2.media
+#Histograma#
+par(mfrow=c(2,2))
+hist(matriz.muestrasP2[1,], main = 'muestra 1')
+hist(matriz.muestrasP2[2,], main = 'muestra 2')
+hist(matriz.muestrasP2[3,], main = 'muestra 3')
+hist(matriz.muestrasP2.media[,tamaño.muestra+1], main = 'medias')
+#Aumente la sd=10 y disminuya el número de individuos de la población, ejemplo 1000##¿Cuanto es el mínimo de muestras a tomar, para que la media obtenida se acerque a la media de la población?#
+simula<-abs (rnorm (1000, mean = 10, sd = 10))
+head(simula)
+Mean.población <- mean(simula)
+Mean.población
+Muestreo <- c (1,5,10,20,150,250,350, 450,550,850,930)
+mean.li <-NULL
+for(i in 1:length(muestreo)){
+  muestra<-sample(simula,muestreo[i],replace = F)
+  mean.li<-c(mean.li,mean(muestra))
+}
+
+plot(cbind(muestreo,mean.li),type = "l")
+
